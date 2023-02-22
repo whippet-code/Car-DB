@@ -19,7 +19,9 @@ server.get("/cars/id:id", async (req, res) => {
 // get car by query single or multiple conditions
 // all Cars send no query params
 server.get("/cars/find", async (req, res) => {
+  // init empty query obj
   let query = {};
+  // build query from any params sent in req
   if (req.query.make) query.make = req.query.make;
   if (req.query.model) query.model = req.query.model;
   if (req.query.registration) query.registration = req.query.registration;
@@ -28,7 +30,7 @@ server.get("/cars/find", async (req, res) => {
   if (req.query.address) query.address = req.query.address;
 
   console.log(`Query ${JSON.stringify(query)}`);
-  // Do others
+  // send query to DB and await result
   const results = await Car.find(query);
   res.json(results);
 });
