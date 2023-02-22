@@ -1,0 +1,9 @@
+PUT http://localhost:5000/cars/"make":"Ford Focus","model":2019,"registration":"YY69WWW"}
+
+
+// url format for query make.
+//GET http://localhost:5000/cars/?"Land Rover"
+
+// url query for any key ?key=value
+//GET http://localhost:5000/cars/find/?make=Land%20Rover&model=2011
+// url must be string without special chars (no "" no spaces etc.

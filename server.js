@@ -8,19 +8,47 @@ const server = express();
 
 const port = 5000;
 
-// test fetch
-server.get("/", async (req, res) => {
-  res.send("All good here");
+// CODE FETCH CALLS HERE - GET / PUT / PATCH / DELETE *** CONTROLLER PART OF APP
+
+//get car by ID
+server.get("/cars/id:id", async (req, res) => {
+  const results = await Car.findById(req.params.id);
+  res.json(results);
 });
 
-// test model get (use 'Car', as mongoose translates this to 'cars' to make the query)
-// returns all cars
-server.get("/cars", async (req, res) => {
-  const allCars = await Car.find();
-  res.send(allCars);
+// get car by query single or multiple conditions
+// all Cars send no query params
+server.get("/cars/find", async (req, res) => {
+  let query = {};
+  if (req.query.make) query.make = req.query.make;
+  if (req.query.model) query.model = req.query.model;
+  if (req.query.registration) query.registration = req.query.registration;
+  if (req.query.color) query.color = req.query.color;
+  if (req.query.owner) query.owner = req.query.owner;
+  if (req.query.address) query.address = req.query.address;
+
+  console.log(`Query ${JSON.stringify(query)}`);
+  // Do others
+  const results = await Car.find(query);
+  res.json(results);
 });
 
-// CODE FETCH CALLS HERE - GET / PUT / PATCH / DELETE
+// Add a new Car to DB
+server.post("/cars/:newCar", async (req, res) => {
+  // get car data from request
+  const newCar = JSON.parse(req.body);
+  console.log(newCar);
+  // make request to DB
+  // const result = await Car.insertOne(newCar);
+  // res.send(result);
+});
+
+// Delete specified car (by id (DB generated) '_id' also used as unique key in React view)
+server.delete("/cars/:id", async (req, res) => {
+  const id = req.params.id;
+  const result = await Car.delete({ _id: id });
+  res.send("Car removed from system");
+});
 
 // use async to allow time for mongoose connect to DB before starting server.
 //If fail to complete, exit server and alert user.
