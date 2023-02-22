@@ -34,20 +34,20 @@ server.get("/cars/find", async (req, res) => {
 });
 
 // Add a new Car to DB
-server.post("/cars/:newCar", async (req, res) => {
+server.post("/cars:newCar", async (req, res) => {
   // get car data from request
-  const newCar = JSON.parse(req.body);
+  const newCar = new Car(JSON.parse(req.params.newCar));
   console.log(newCar);
   // make request to DB
-  // const result = await Car.insertOne(newCar);
-  // res.send(result);
+  const result = await newCar.save();
+  res.json(result);
 });
 
 // Delete specified car (by id (DB generated) '_id' also used as unique key in React view)
 server.delete("/cars/:id", async (req, res) => {
   const id = req.params.id;
-  const result = await Car.delete({ _id: id });
-  res.send("Car removed from system");
+  const result = await Car.findByIdAndDelete({ _id: id });
+  res.send(result);
 });
 
 // use async to allow time for mongoose connect to DB before starting server.
