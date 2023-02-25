@@ -1,11 +1,15 @@
 import Car from "./components/Car";
+// Store for car type urls -
+// 4x4 - https://www.kayak.co.uk/c/wp-content/uploads/sites/198/2020/09/06_suv-medium_red-1.png
+// Compact - https://www.kayak.co.uk/c/wp-content/uploads/sites/198/2020/09/02_economy_red-1.png
+// Saloon - https://www.kayak.co.uk/c/wp-content/uploads/sites/198/2020/09/04-saloon-standard.png
 
 import "./App.css";
 
 function App() {
   // testing obj
   const car1 = {
-    url: "https://en.wikipedia.org/wiki/Land_Rover_Freelander#/media/File:2013_Land_Rover_Freelander_Dynamic_SD4_Automatic_2.2_Front.jpg",
+    url: "https://www.kayak.co.uk/c/wp-content/uploads/sites/198/2020/09/06_suv-medium_red-1.png",
     make: "Land Rover",
     model: 2010,
     color: "Moon Silver",
