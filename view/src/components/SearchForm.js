@@ -14,43 +14,43 @@ function SearchForm() {
   return (
     <div className="searchForm">
       <form onSubmit={handleSubmit}>
-        <label for="make">Make</label>
+        <label htmlFor="make">Make</label>
         <input
           type="text"
           id="make"
           onChange={(e) => console.log(e.target)}
         ></input>
-        <label for="model">Model</label>
+        <label htmlFor="model">Model</label>
         <input
           type="text"
           id="model"
           onChange={(e) => console.log(e.target)}
         ></input>
-        <label for="registration">Registration</label>
+        <label htmlFor="registration">Registration</label>
         <input
           type="text"
           id="registration"
           onChange={(e) => console.log(e.target)}
         ></input>
-        <label for="type">Type</label>
+        <label htmlFor="type">Type</label>
         <input
           type="text"
           id="type"
           onChange={(e) => console.log(e.target)}
         ></input>
-        <label for="color">Color</label>
+        <label htmlFor="color">Color</label>
         <input
           type="text"
           id="color"
           onChange={(e) => console.log(e.target)}
         ></input>
-        <label for="owner">Owner</label>
+        <label htmlFor="owner">Owner</label>
         <input
           type="text"
           id="owner"
           onChange={(e) => console.log(e.target)}
         ></input>
-        <label for="address">Address</label>
+        <label htmlFor="address">Address</label>
         <input
           type="text"
           id="address"

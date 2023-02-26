@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 // import components
 import Car from "./components/Car";
 import SearchForm from "./components/SearchForm";
@@ -6,16 +8,38 @@ import SearchForm from "./components/SearchForm";
 import "./App.css";
 
 function App() {
-  // testing obj
-  const car1 = {
-    make: "Land Rover",
-    model: 2010,
-    type: "4x4",
-    color: "Moon Silver",
-    registration: "PP34FDS",
-    owner: "Roger Jones",
-    address: "123 Alphaville US",
-  };
+  // Need fetch call for cars data to display
+  // By default show all cars?
+  const [carData, setCarData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  let [url, setUrl] = useState("http://localhost:5000/cars/find/?");
+
+  function getUrl() {
+    setUrl(
+      (prevState) =>
+        (prevState = "http://localhost:5000/cars/find?make=Land%20Rover")
+    );
+  }
+
+  function getData(url) {
+    fetch(url)
+      .then((res) => res.json())
+      .then(setCarData)
+      .catch(() => setIsError(true))
+      .finally(() => setIsLoading(false));
+  }
+
+  useEffect(() => {
+    setIsLoading(true);
+    setIsError(false);
+    setCarData(undefined);
+
+    getData(url);
+  }, [url]);
+
+  // further calls come from searchform comp - Need to pass data & setData as props
 
   return (
     <>
@@ -27,16 +51,20 @@ function App() {
         <div className="rightSide">
           <h1>Cars Database</h1>
           <div className="cars">
-            <Car {...car1} />
-            <Car {...car1} />
-            <Car {...car1} />
-            <Car {...car1} />
-            <Car {...car1} />
-            <Car {...car1} />
+            {isLoading ? (
+              <h1>Loading . . . . </h1>
+            ) : isError ? (
+              <h1>Error</h1>
+            ) : (
+              carData.map((car) => <Car key={car._id} {...car} />)
+            )}
           </div>
         </div>
       </div>
       <footer>
+        <button type="button" onClick={getUrl}>
+          Click
+        </button>
         <p>Bottom of page holding text</p>
       </footer>
     </>

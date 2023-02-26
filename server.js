@@ -1,10 +1,15 @@
 const express = require("express");
 // add mongoose
 const mongoose = require("mongoose");
+// cors middlewear
+const cors = require("cors");
 
 // import model
 const { Car } = require("./models/carModel");
 const server = express();
+
+// setup cors use for local dev requests development
+server.use(cors());
 
 const port = 5000;
 
