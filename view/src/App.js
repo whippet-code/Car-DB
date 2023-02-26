@@ -16,10 +16,6 @@ function App() {
 
   let [url, setUrl] = useState("http://localhost:5000/cars/find/?");
 
-  function getUrl() {
-    setUrl("http://localhost:5000/cars/find/?type=compact");
-  }
-
   function getData(url) {
     fetch(url)
       .then((res) => res.json())
@@ -43,7 +39,7 @@ function App() {
       <div className="App">
         <div className="leftSide">
           <h1>Find Cars</h1>
-          <SearchForm />
+          <SearchForm url={url} setUrl={setUrl} />
         </div>
         <div className="rightSide">
           <h1>Cars Database</h1>
@@ -59,9 +55,6 @@ function App() {
         </div>
       </div>
       <footer>
-        <button type="button" onClick={getUrl}>
-          Click
-        </button>
         <p>Bottom of page holding text</p>
       </footer>
     </>
