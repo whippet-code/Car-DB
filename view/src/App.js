@@ -17,9 +17,10 @@ function App() {
   let [url, setUrl] = useState("http://localhost:5000/cars/find/?");
 
   function getData(url) {
+    console.log(`GetData call url - ${url}`);
     fetch(url)
       .then((res) => res.json())
-      .then(setCarData)
+      .then((data) => setCarData(data))
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
   }
@@ -32,7 +33,7 @@ function App() {
     getData(url);
   }, [url]);
 
-  // further calls come from searchform comp - Need to pass data & setData as props
+  // further calls come from searchform comp - Need to pass data & setData as props to SearchForm comp.
 
   return (
     <>

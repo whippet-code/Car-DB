@@ -22,34 +22,67 @@ function SearchForm(props) {
   // prevent default form action upon submitting
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // make the fetch call here using state obj as data
     // create url for submitting call
     let newUrl = urlBuilder(searchData);
     props.setUrl(newUrl);
     // update url for datasearch (should cause rerender of page)
 
     // update window (ie. re render App)
-    window.location.reload(true);
+    // window.location.reload(true);
   };
 
   return (
     <div className="searchForm">
       <form onSubmit={handleSubmit}>
         <label htmlFor="make">Make</label>
-        <input type="text" id="make" onChange={handleChange}></input>
+        <input
+          type="text"
+          id="make"
+          name="make"
+          onChange={handleChange}
+        ></input>
         <label htmlFor="model">Model</label>
-        <input type="text" id="model" onChange={handleChange}></input>
+        <input
+          type="text"
+          id="model"
+          name="model"
+          onChange={handleChange}
+        ></input>
         <label htmlFor="registration">Registration</label>
-        <input type="text" id="registration" onChange={handleChange}></input>
+        <input
+          type="text"
+          id="registration"
+          name="registration"
+          onChange={handleChange}
+        ></input>
         <label htmlFor="type">Type</label>
-        <input type="text" id="type" onChange={handleChange}></input>
+        <input
+          type="text"
+          id="type"
+          name="type"
+          onChange={handleChange}
+        ></input>
         <label htmlFor="color">Color</label>
-        <input type="text" id="color" onChange={handleChange}></input>
+        <input
+          type="text"
+          id="color"
+          name="color"
+          onChange={handleChange}
+        ></input>
         <label htmlFor="owner">Owner</label>
-        <input type="text" id="owner" onChange={handleChange}></input>
+        <input
+          type="text"
+          id="owner"
+          name="owner"
+          onChange={handleChange}
+        ></input>
         <label htmlFor="address">Address</label>
-        <input type="text" id="address" onChange={handleChange}></input>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          onChange={handleChange}
+        ></input>
         <button type="submit" onClick={handleSubmit}>
           Search
         </button>
