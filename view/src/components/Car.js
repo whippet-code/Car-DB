@@ -29,8 +29,8 @@ function Car({ ...car }) {
     <div className="car">
       <img src={typeImg} alt={car.make + " " + car.model} />
       {/* Do map of car?? for each props render a h4 ? */}
-      {Object.values(car).map((entry) => (
-        <h5>{entry}</h5>
+      {Object.values(car).map((entry, index) => (
+        <h5 key={index}>{entry}</h5>
       ))}
     </div>
   );

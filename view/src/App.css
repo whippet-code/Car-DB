@@ -1,0 +1,31 @@
+.App {
+  display: flex;
+  margin: 1rem;
+}
+
+.leftSide {
+  flex: 1;
+  padding: 1rem;
+  background: rgb(151,198,156);
+  border-radius: 0 1rem 1rem 0;
+}
+
+.rightSide {
+  flex: 5;
+  padding: 1rem;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  margin-top: 2.5rem;;
+}
+
+.cars {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 2rem;
+  background: #f6f6f6;
+  border-radius: 0.5rem;
+}

@@ -1,5 +1,8 @@
+// import components
 import Car from "./components/Car";
+import SearchForm from "./components/SearchForm";
 
+// Styles
 import "./App.css";
 
 function App() {
@@ -15,12 +18,28 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div className="top"></div>
-      <div className="cars">
-        <Car {...car1} />
+    <>
+      <div className="App">
+        <div className="leftSide">
+          <h1>Find Cars</h1>
+          <SearchForm />
+        </div>
+        <div className="rightSide">
+          <h1>Cars Database</h1>
+          <div className="cars">
+            <Car {...car1} />
+            <Car {...car1} />
+            <Car {...car1} />
+            <Car {...car1} />
+            <Car {...car1} />
+            <Car {...car1} />
+          </div>
+        </div>
       </div>
-    </div>
+      <footer>
+        <p>Bottom of page holding text</p>
+      </footer>
+    </>
   );
 }
 
