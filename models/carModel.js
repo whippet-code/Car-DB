@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 
 // Create Schema for each car in
 const CarSchema = new mongoose.Schema({
+  type: {
+    type: String,
+    required: true,
+  },
   make: {
     type: String,
     required: true,

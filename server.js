@@ -22,6 +22,7 @@ server.get("/cars/find", async (req, res) => {
   // init empty query obj
   let query = {};
   // build query from any params sent in req
+  if (req.query.type) query.type = req.query.type;
   if (req.query.make) query.make = req.query.make;
   if (req.query.model) query.model = req.query.model;
   if (req.query.registration) query.registration = req.query.registration;
