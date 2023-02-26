@@ -23,7 +23,7 @@ server.get("/cars/id:id", async (req, res) => {
 
 // get car by query single or multiple conditions
 // all Cars send no query params
-server.get("/cars/find", async (req, res) => {
+server.get("/cars/find/", async (req, res) => {
   // init empty query obj
   let query = {};
   // build query from any params sent in req

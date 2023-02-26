@@ -17,10 +17,7 @@ function App() {
   let [url, setUrl] = useState("http://localhost:5000/cars/find/?");
 
   function getUrl() {
-    setUrl(
-      (prevState) =>
-        (prevState = "http://localhost:5000/cars/find?make=Land%20Rover")
-    );
+    setUrl("http://localhost:5000/cars/find/?type=compact");
   }
 
   function getData(url) {
