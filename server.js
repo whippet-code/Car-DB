@@ -35,14 +35,14 @@ server.get("/cars/find/", async (req, res) => {
   if (req.query.owner) query.owner = req.query.owner;
   if (req.query.address) query.address = req.query.address;
 
-  console.log(`Query ${JSON.stringify(query)}`);
+  console.log(`Search Query ${JSON.stringify(query)}`);
   // send query to DB and await result
   const results = await Car.find(query);
   res.json(results);
 });
 
 // Add a new Car to DB
-server.post("/cars:newCar", async (req, res) => {
+server.post("/cars/:newCar", async (req, res) => {
   // get car data from request
   const newCar = new Car(JSON.parse(req.params.newCar));
   console.log(newCar);

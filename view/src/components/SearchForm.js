@@ -22,10 +22,24 @@ function SearchForm(props) {
   // prevent default form action upon submitting
   const handleSubmit = (e) => {
     e.preventDefault();
-    // create url for submitting call
-    let newUrl = urlBuilder(searchData);
-    props.setUrl(newUrl);
+    // define newUrl for search req
+    let newUrl;
+    // create url for submitting call (depends on if search or new car button clicked)
+    if (e.target.id === "search") {
+      newUrl = urlBuilder(searchData, "SEARCH");
+    } else if (e.target.id === "newCar") {
+      //ensure required fields are filled in (type, make, model, registration)
+      if (
+        searchData.type &&
+        searchData.make &&
+        searchData.model &&
+        searchData.registration
+      ) {
+        newUrl = urlBuilder(searchData, "ADD");
+      } else alert("Please fill in the required fields to add a new car");
+    }
     // update url for datasearch (should cause rerender of page)
+    props.setUrl(newUrl);
 
     // update window (ie. re render App)
     // window.location.reload(true);
@@ -83,8 +97,11 @@ function SearchForm(props) {
           name="address"
           onChange={handleChange}
         ></input>
-        <button type="submit" onClick={handleSubmit}>
+        <button type="submit" id="search" onClick={handleSubmit}>
           Search
+        </button>
+        <button type="submit" id="newCar" onClick={handleSubmit}>
+          New Car
         </button>
       </form>
     </div>
