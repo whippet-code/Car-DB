@@ -44,13 +44,14 @@ server.get("/cars/find/", async (req, res) => {
 });
 
 // Add a new Car to DB
-server.post("/cars/:newCar", async (req, res) => {
+server.post("/cars/", async (req, res) => {
   // get car data from request
-  const newCar = new Car(JSON.parse(req.body));
-  console.log(newCar);
-  // make request to DB
+  console.log("Post req started server.js");
+  let data = req.body;
+  const newCar = new Car(data);
+  // make request to save to DB
   const result = await newCar.save();
-  res.json(result);
+  res.json(`After ${result}`);
 });
 
 // Delete specified car (by id (DB generated) '_id' also used as unique key in React view)
