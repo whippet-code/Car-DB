@@ -54,6 +54,16 @@ server.post("/cars/", async (req, res) => {
   console.log(`Post req complete with - ${result}`);
 });
 
+// update a car
+server.patch("/cars/:registration", async (req, res) => {
+  console.log("Patch request to update car doc");
+  // get car data from req.body
+  const { registration } = req.params;
+  await Car.updateOne({ registration }, req.body);
+  const updatedCar = await Car.find({ registration });
+  return res.status(200).json(updatedCar);
+});
+
 // Delete specified car (by id (DB generated) '_id' also used as unique key in React view)
 server.delete("/cars/", async (req, res) => {
   const id = req.body.id;

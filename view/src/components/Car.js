@@ -61,15 +61,13 @@ function Car({ ...car }) {
       break;
   }
   return isEdit ? (
-    <Form id={car._id} />
+    <div className="car">
+      <Form {...car} />
+    </div>
   ) : (
     <div className="car">
       <img src={typeImg} alt={car.make + " " + car.model} />
-      {/* Do map of car?? for each props render a h4. Don't include _id & __v*/}
-      {/* {Object.values(car).map((entry, index) => (
-        <h5 key={index}>{entry}</h5>
-      ))} */}
-      {/* Selecgtive render of data */}
+      {/* Selective render of data */}
       <h4>{car.type}</h4>
       <h4>{car.make}</h4>
       <h4>{car.model}</h4>
