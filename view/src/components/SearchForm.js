@@ -29,12 +29,7 @@ function SearchForm(props) {
       newUrl = urlBuilder(searchData, "SEARCH");
     } else if (e.target.id === "newCar") {
       //ensure required fields are filled in (type, make, model, registration)
-      if (
-        searchData.type &&
-        searchData.make &&
-        searchData.model &&
-        searchData.registration
-      ) {
+      if (searchData.make && searchData.model && searchData.registration) {
         // POST fetch call
         fetch("http://localhost:5000/cars/", {
           method: "POST",
@@ -78,12 +73,13 @@ function SearchForm(props) {
           onChange={handleChange}
         ></input>
         <label htmlFor="type">Type</label>
-        <input
-          type="text"
-          id="type"
-          name="type"
-          onChange={handleChange}
-        ></input>
+        <select name="type" id="type" onChange={handleChange}>
+          <option value="4x4">4x4</option>
+          <option value="saloon">Saloon</option>
+          <option value="compact">Compact</option>
+          <option value="sports">Sports</option>
+          <option value="van">Van</option>
+        </select>
         <label htmlFor="color">Color</label>
         <input
           type="text"

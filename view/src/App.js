@@ -39,11 +39,10 @@ function App() {
     <>
       <div className="App">
         <div className="leftSide">
-          <h1>Find Cars</h1>
+          <h1>Find / Add Cars</h1>
           <SearchForm url={url} setUrl={setUrl} />
         </div>
         <div className="rightSide">
-          <h1>Cars Database</h1>
           <div className="cars">
             {isLoading ? (
               <h1>Loading . . . . </h1>
@@ -56,7 +55,10 @@ function App() {
         </div>
       </div>
       <footer>
-        <p>Bottom of page holding text</p>
+        <p>
+          Full Stack Cars management app - MongoDB, Express.js, React - Mark
+          Ivkovic
+        </p>
       </footer>
     </>
   );

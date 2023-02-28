@@ -57,7 +57,13 @@ function Car({ ...car }) {
       typeImg =
         "https://www.kayak.co.uk/c/wp-content/uploads/sites/198/2020/09/04-saloon-standard.png";
       break;
+    case "sports":
+      typeImg =
+        "https://www.kayak.co.uk/c/wp-content/uploads/sites/198/2020/09/08_convertible_black-1.png";
+      break;
     default:
+      typeImg =
+        "https://www.kayak.co.uk/c/wp-content/uploads/sites/198/2020/09/07_van_black-1.png";
       break;
   }
   return isEdit ? (
@@ -67,7 +73,14 @@ function Car({ ...car }) {
   ) : (
     <div className="car">
       <img src={typeImg} alt={car.make + " " + car.model} />
+      <br></br>
       {/* Selective render of data */}
+      <button type="button" value={car._id} onClick={handleEdit}>
+        Edit
+      </button>
+      <button type="button" value={car._id} onClick={handleDelete}>
+        Delete
+      </button>
       <h4>{car.type}</h4>
       <h4>{car.make}</h4>
       <h4>{car.model}</h4>
@@ -75,12 +88,6 @@ function Car({ ...car }) {
       {car.color ? <h5>Colour: {car.color}</h5> : ""}
       {car.owner ? <h5>Owner: {car.owner}</h5> : ""}
       {car.address ? <h5>Address: {car.address}</h5> : ""}
-      <button type="button" value={car._id} onClick={handleEdit}>
-        Edit
-      </button>
-      <button type="button" value={car._id} onClick={handleDelete}>
-        Delete
-      </button>
     </div>
   );
 }

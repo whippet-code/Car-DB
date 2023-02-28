@@ -6,14 +6,20 @@
 .leftSide {
   flex: 1;
   padding: 1rem;
-  background: rgb(151,198,156);
+  background: rgb(74, 102, 76);
   border-radius: 0 1rem 1rem 0;
+  color: white;
 }
 
 .rightSide {
   flex: 5;
-  padding: 1rem;
   text-align: center;
+}
+
+.rightSide h1 {
+  font-stretch: ultra-expanded;
+  font-weight: bold;
+  color:rgb(74, 102, 76);
 }
 
 footer {
@@ -27,5 +33,5 @@ footer {
   justify-content: space-evenly;
   padding: 2rem;
   background: #f6f6f6;
-  border-radius: 0.5rem;
+  border-radius: 1rem 0 0 1rem;
 }
