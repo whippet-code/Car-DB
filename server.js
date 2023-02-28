@@ -51,7 +51,7 @@ server.post("/cars/", async (req, res) => {
   const newCar = new Car(data);
   // make request to save to DB
   const result = await newCar.save();
-  res.json(`After ${result}`);
+  console.log(`Post req complete with - ${result}`);
 });
 
 // Delete specified car (by id (DB generated) '_id' also used as unique key in React view)

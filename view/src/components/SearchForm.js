@@ -23,7 +23,7 @@ function SearchForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // define newUrl for search req
-    let newUrl;
+    let newUrl = "http://localhost:5000/cars/find/?";
     // create url for submitting call (depends on if search or new car button clicked)
     if (e.target.id === "search") {
       newUrl = urlBuilder(searchData, "SEARCH");
@@ -43,15 +43,14 @@ function SearchForm(props) {
             "Content-type": "application/json; charset=UTF-8",
           },
         })
-          .then((res) => res.json())
-          .then((data) => console.log(`Car added - ${data}`));
+          .then((res) => console.log(`Car added - ${res}`))
+          .then(window.location.reload(true)) // "force" page rerender to update cars display.
+          .catch((err) => console.error(`Error with request - ${err}`));
+        // Form not completed for DB to accept data
       } else alert("Please fill in the required fields to add a new car");
     }
-    // update url for datasearch (should cause rerender of page)
+    // update url (should cause rerender of page if url has changed (search will do this))
     props.setUrl(newUrl);
-
-    // update window (ie. re render App)
-    // window.location.reload(true);
   };
 
   return (
@@ -66,7 +65,7 @@ function SearchForm(props) {
         ></input>
         <label htmlFor="model">Model</label>
         <input
-          type="text"
+          type="number"
           id="model"
           name="model"
           onChange={handleChange}
