@@ -17,7 +17,11 @@ function App() {
   let [url, setUrl] = useState("http://localhost:5000/cars/find/?");
 
   function getData(url) {
-    console.log(`GetData call url - ${url}`);
+    console.log(`Get Data call url - ${url}`);
+    // needs a param for fetch type???? This is just for changing data from searches???
+    // YEP need ot utilise the fetch init param to build the post body etc.
+    // change get Data to allow for this with having a second param
+
     fetch(url)
       .then((res) => res.json())
       .then((data) => setCarData(data))

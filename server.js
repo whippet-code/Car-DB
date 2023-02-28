@@ -10,6 +10,8 @@ const server = express();
 
 // setup cors use for local dev requests development
 server.use(cors());
+// use .json() middlewear
+server.use(express.json());
 
 const port = 5000;
 
@@ -44,7 +46,7 @@ server.get("/cars/find/", async (req, res) => {
 // Add a new Car to DB
 server.post("/cars/:newCar", async (req, res) => {
   // get car data from request
-  const newCar = new Car(JSON.parse(req.params.newCar));
+  const newCar = new Car(JSON.parse(req.body));
   console.log(newCar);
   // make request to DB
   const result = await newCar.save();

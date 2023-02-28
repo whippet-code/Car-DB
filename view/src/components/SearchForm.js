@@ -35,7 +35,18 @@ function SearchForm(props) {
         searchData.model &&
         searchData.registration
       ) {
-        newUrl = urlBuilder(searchData, "ADD");
+        // POST fetch call
+        fetch("http://localhost:5000/cars/", {
+          method: "POST",
+          body: searchData,
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(`Car added - ${data}`))
+          //reset url to all cars display (will update idsplay showing new car)
+          .finally(props.setUrl("http://localhost:5000/cars/find/?"));
       } else alert("Please fill in the required fields to add a new car");
     }
     // update url for datasearch (should cause rerender of page)

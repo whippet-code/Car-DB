@@ -1,5 +1,6 @@
 // POST test to add car
 // POST http://localhost:5000/cars/{"type":"compact","make":"Fiat 500","model":2022,"registration":"YY72FUN"}
+POST http://localhost:5000/cars/{"make":"Mazda MX-3","model":"2017","registration":"MX17MZD","type":"compact"}
 
 
 // url format for query make.
