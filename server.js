@@ -55,8 +55,9 @@ server.post("/cars/", async (req, res) => {
 });
 
 // Delete specified car (by id (DB generated) '_id' also used as unique key in React view)
-server.delete("/cars/:id", async (req, res) => {
-  const id = req.params.id;
+server.delete("/cars/", async (req, res) => {
+  const id = req.body.id;
+  console.log(`Delete request for document id-${id}`);
   const result = await Car.findByIdAndDelete({ _id: id });
   res.send(result);
 });

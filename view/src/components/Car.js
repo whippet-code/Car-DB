@@ -7,6 +7,20 @@
 
 function handleDelete(e) {
   console.log("Delete Request " + e.target.value);
+  // DELETE fetch call
+  // http://localhost:5000/cars/63fd052d2704c13c2c58cfbc
+  fetch("http://localhost:5000/cars/", {
+    method: "DELETE",
+    body: JSON.stringify({
+      id: e.target.value,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((res) => console.log(`Car deleted - ${res}`))
+    .then(window.location.reload(true)) // "force" page rerender to update cars display.
+    .catch((err) => console.error(`Error with request - ${err}`));
 }
 
 function handleEdit(e) {
