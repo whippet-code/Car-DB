@@ -8,4 +8,3 @@ App allows adding, updating, searching and deleting of documents.
 
 \*\*\* End tweeks (things that i see in dev but aren't affecting main usage/function)
 Finesse car cards to remove id & other extranious data from DB
-Clean up DB
