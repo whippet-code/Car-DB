@@ -51,6 +51,7 @@ function Form({ ...car }) {
         ></input>
         <label htmlFor="type">Type</label>
         <select name="type" id="type" onChange={handleChange}>
+          <option value="">Any</option>
           <option value="4x4">4x4</option>
           <option value="saloon">Saloon</option>
           <option value="compact">Compact</option>
