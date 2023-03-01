@@ -6,11 +6,6 @@ import { useState } from "react";
 //imp componenets
 import Form from "./Form";
 
-// Store for car type urls -
-// 4x4 - https://www.kayak.co.uk/c/wp-content/uploads/sites/198/2020/09/06_suv-medium_red-1.png
-// Compact - https://www.kayak.co.uk/c/wp-content/uploads/sites/198/2020/09/02_economy_red-1.png
-// Saloon - https://www.kayak.co.uk/c/wp-content/uploads/sites/198/2020/09/04-saloon-standard.png
-
 // Takes props of a car object
 // conditional render (if Edit button is clicked (isEdit == true)) then render edit form. Else render car info
 function Car({ ...car }) {
